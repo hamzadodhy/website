@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Dodhy - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            position: relative;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        nav a.active {
+            opacity: 1;
+        }
+
+        nav a.active::after {
+            transform: scaleX(1);
+        }
+
+        .welcome-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .welcome-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .view-projects-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            color: #fff;
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .view-projects-btn:hover {
+            background: #fff;
+            color: #0a0a0a;
+            transform: translateY(-2px);
+        }
+
+        #projects {
+            padding: 6rem 2rem;
+            background: #0a0a0a;
+        }
+
+        #projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .project-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        .project-info-preview {
+            flex: 1;
+        }
+
+        .project-info-preview h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-info-preview p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-meta i {
+            font-size: 1.2rem;
+        }
+
+        .projects-category {
+            margin-bottom: 4rem;
+        }
+
+        .projects-category h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-card {
+            position: relative;
+            cursor: pointer;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.4s ease;
+            background: #111;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: grayscale(100%);
+        }
+
+        .project-card:hover .project-thumbnail img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .project-hover-preview {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.7));
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-hover-preview h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            height: 100%;
+            padding: 2rem;
+            max-height: 90vh;
+        }
+
+        .preview-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .preview-header h3 {
+            font-size: 1.8rem;
+            margin: 0;
+            background: linear-gradient(45deg, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .back-button, .fullscreen-btn {
+            padding: 0.6rem 1rem;
+            font-size: 1rem;
+            color: #fff;
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .back-button:hover, .fullscreen-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .preview-viewer {
+            flex-grow: 1;
+            padding: 1rem;
+            min-height: 0;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .files-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .files-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .files-panel::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .files-panel::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .files-panel::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .project-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .project-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .info-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #fff;
+        }
+
+        .files-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .files-header {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .files-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .download-all-btn {
+            padding: 0.7rem 1.2rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .download-all-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .files-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .files-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .files-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .files-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .files-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .file-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .file-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .file-item.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 3px solid #fff;
+        }
+
+        .file-icon {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .file-info {
+            flex-grow: 1;
+        }
+
+        .file-name {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .file-type {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+
+        footer {
+            background: #111;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .fullscreen-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .fullscreen-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .fullscreen-image,
+        .fullscreen-pdf {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-arrow.prev {
+            left: 2rem;
+        }
+
+        .nav-arrow.next {
+            right: 2rem;
+        }
+
+        .fullscreen-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-content-wrapper {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 95vw;
+            height: 90vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1500;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .preview-frame {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .pdf-page {
+            display: block;
+            margin: 1rem auto;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pdf-page.visible {
+            opacity: 1;
+        }
+
+        /* Contact Section Styles */
+        .contact-section {
+            padding: 6rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-form {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 4rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.9rem;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .form-message.success {
+            background: rgba(46, 213, 115, 0.9);
+            transform: translateX(0);
+        }
+
+        .form-message.error {
+            background: rgba(255, 71, 87, 0.9);
+            transform: translateX(0);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: #111;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-link:active {
+            transform: translateY(-2px);
+        }
+
+        .contact-link img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .contact-link {
+                width: 50px;
+                height: 50px;
+            }
+
+            .contact-link img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-section {
+                padding: 3rem 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .contact-link {
+                width: 45px;
+                height: 45px;
+            }
+
+            .contact-link img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hamza Dodhy</h1>
+        <nav>
+            <a href="#welcome">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="welcome" class="welcome-section">
+            <h1 class="welcome-title">Engineering Excellence</h1>
+            <p class="welcome-subtitle">Welcome to my portfolio of architectural and engineering projects. Each design tells a story of innovation, precision, and creative problem-solving.</p>
+            <button class="view-projects-btn" onclick="scrollToProjects()">View Projects</button>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            
+            <!-- Innovative Sustainability -->
+            <div class="projects-category">
+                <h3>Innovative Sustainability</h3>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Smart Barjeel</h3>
+                            <p>A groundbreaking project combining traditional Arabic architecture with modern smart technology to create sustainable cooling solutions. Features automated wind direction optimization and IoT-based monitoring system.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Dubai, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>January 2024</span>
+                            <span><i class="fas fa-laptop"></i>Revit, ANSYS CFD</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Thermochromatic Roof</h3>
+                            <p>An innovative roofing system that adapts to temperature changes, optimizing energy efficiency and indoor comfort. Features smart materials that respond to environmental conditions.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Dubai, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>February 2024</span>
+                            <span><i class="fas fa-laptop"></i>Revit, ANSYS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Architecture Projects -->
+            <div class="projects-category">
+                <h3>Architecture Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Blending Jameel</h3>
+                            <p>A modern industrial facility designed to optimize blending processes while maintaining high safety standards and operational efficiency.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Dubai, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>December 2023</span>
+                            <span><i class="fas fa-laptop"></i>AutoCAD, Revit, Enscape</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Tilal City House</h3>
+                            <p>Modern residential design focusing on spatial efficiency and natural light optimization.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Sharjah, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>May 2023</span>
+                            <span><i class="fas fa-laptop"></i>Revit, Enscape, AutoCAD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Simple House</h3>
+                            <p>Minimalist residential design emphasizing clean lines and functional spaces.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Dubai, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>April 2023</span>
+                            <span><i class="fas fa-laptop"></i>Revit, Enscape</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Dental Clinic</h3>
+                            <p>A state-of-the-art dental clinic featuring modern design elements and optimal space utilization for patient comfort.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Abu Dhabi, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>March 2023</span>
+                            <span><i class="fas fa-laptop"></i>Revit, Enscape</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Complete House</h3>
+                            <p>A contemporary residential project that balances luxury with functionality, incorporating sustainable design principles.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Sharjah, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>August 2023</span>
+                            <span><i class="fas fa-laptop"></i>Revit, Enscape, AutoCAD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Private Room</h3>
+                            <p>Luxurious private room design with emphasis on comfort and modern healthcare requirements.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Dubai, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>September 2023</span>
+                            <span><i class="fas fa-laptop"></i>Revit, Enscape</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Projects -->
+            <div class="projects-category">
+                <h3>Research Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Merdeka</h3>
+                            <p>Research project analyzing sustainable design practices in tropical climates.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Malaysia</span>
+                            <span><i class="fas fa-calendar-days"></i>November 2023</span>
+                            <span><i class="fas fa-laptop"></i>Revit, AutoCAD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Lab Project - Welding Room</h3>
+                            <p>Advanced CFD analysis and optimization of ventilation systems for a welding laboratory.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Abu Dhabi, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>June 2023</span>
+                            <span><i class="fas fa-laptop"></i>ANSYS, AutoCAD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>IESVE Analysis</h3>
+                            <p>Comprehensive energy analysis and optimization study for sustainable building design.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Dubai, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>July 2023</span>
+                            <span><i class="fas fa-laptop"></i>IESVE, AutoCAD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-info-preview">
+                            <h3>Procurement Project</h3>
+                            <p>Comprehensive procurement strategy and implementation plan for construction materials.</p>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-location-dot"></i>Dubai, UAE</span>
+                            <span><i class="fas fa-calendar-days"></i>October 2023</span>
+                            <span><i class="fas fa-laptop"></i>MS Office Suite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get in Touch</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" placeholder="Your message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <a href="mailto:hamza.dodhy@outlook.com" class="contact-link" title="Email">
+                    <img src="Icons/mail.png" alt="Email">
+                </a>
+                <a href="https://www.linkedin.com/in/hamzadodhy/" target="_blank" class="contact-link" title="LinkedIn">
+                    <img src="Icons/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://wa.me/971561655760" target="_blank" class="contact-link" title="WhatsApp">
+                    <img src="Icons/whatsapp.png" alt="WhatsApp">
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Hamza Dodhy. All rights reserved.</p>
+    </footer>
+
+    <!-- Add PDF.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- Add JSZip library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("IQhUoQk-Qqb_AAtCL");
+        })();
+
+        function scrollToProjects() {
+            document.getElementById('projects').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Project data
+        const projectFiles = {
+            'Smart Barjeel': [
+                { name: 'Smart Barjeel.pdf', type: 'PDF', category: 'Documentation' }
+            ],
+            'Thermochromatic Roof': [
+                { name: 'Thermochromatic Roof.pdf', type: 'PDF', category: 'Documentation' }
+            ],
+            'Blending Jameel': [
+                { name: '00 Stage 1 Blending Jameel.pdf', type: 'PDF', category: 'Documentation' },
+                { name: '01 Stage 2 Blending Jameel.pdf', type: 'PDF', category: 'Documentation' },
+                { name: '03 Design Stage Bleding Jameel.pdf', type: 'PDF', category: 'Documentation' },
+                { name: '04 Blending Jameel Summary.pdf', type: 'PDF', category: 'Documentation' },
+                { name: 'A101 - Upadated Colored Function Plan Plan.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A102 - Ground Floor Plan.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A103 - Roof Plan.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A104 - Building Elevations.pdf', type: 'PDF', category: 'Elevations' },
+                { name: 'A105 -Fire Evacuation Plan.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A106 - Area and Occupancy Plan.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A107 - Lighting.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A108 - Service Risers and Plinths.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A109 - Utility Supply.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A110 - AHU Room Section Block Layout.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A111 - Plant Room Block Layout.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'A112 - Electrical and Plant Room Block Layout.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'Plumbing Sheet 1.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'Plumbing Sheet 2.pdf', type: 'PDF', category: 'Plans' }
+            ],
+            'Dental Clinic': [
+                { name: 'Dental Clinic - Night View.png', type: 'Image', category: 'Renders' },
+                { name: 'Dental Clinic - Dentist View.png', type: 'Image', category: 'Renders' },
+                { name: 'Dental Clinic - Accessories.png', type: 'Image', category: 'Renders' },
+                { name: 'Floor Plan.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'Dental Clinic Walkthrough.mp4', type: 'Video', category: 'Renders' }
+            ],
+            'Complete House': [
+                { name: 'Floor Plan.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'Section 1.pdf', type: 'PDF', category: 'Sections' }
+            ],
+            'IESVE Analysis': [
+                { name: '00 IES VE Application on Design.pdf', type: 'PDF', category: 'Documentation' }
+            ],
+            'Tilal City House': [
+                { name: 'Area Plan.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'Dimensions First Floor.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'Dimensions.pdf', type: 'PDF', category: 'Plans' },
+                { name: 'Kitchen Design.pdf', type: 'PDF', category: 'Details' },
+                { name: 'Reading Nook.pdf', type: 'PDF', category: 'Details' },
+                { name: 'Window Design.pdf', type: 'PDF', category: 'Details' }
+            ],
+            'Simple House': [
+                { name: '3D Corner Balcony - Wall Railing.jpg', type: 'Image', category: 'Renders' },
+                { name: '3D Corner Balcony.jpg', type: 'Image', category: 'Renders' },
+                { name: '3D Long  Balcony.jpg', type: 'Image', category: 'Renders' },
+                { name: 'Simple House Sheet.pdf', type: 'PDF', category: 'Documentation' }
+            ],
+            'Lab Project - Welding Room': [
+                { name: '00 ANSYS CFD Application on a Lab Project.pdf', type: 'PDF', category: 'Documentation' }
+            ],
+            'Private Room': [
+                { name: 'Private Room - Bed Head unit.png', type: 'Image', category: 'Renders' },
+                { name: 'Private Room - Door View (Day).png', type: 'Image', category: 'Renders' },
+                { name: 'Private Room - Frontal View (zoomed in).png', type: 'Image', category: 'Renders' },
+                { name: 'Private Room - Frontal View.png', type: 'Image', category: 'Renders' }
+            ],
+            'Procurement Project': [
+                { name: 'Procurement Report.pdf', type: 'PDF', category: 'Documentation' }
+            ],
+            'Merdeka': [
+                { name: 'Individual Portfolio-H00314985-D30IC-Hamza Dodhy.pdf', type: 'PDF', category: 'Documentation' }
+            ]
+        };
+
+        // Project details data
+        const projectDetails = {
+            'Smart Barjeel': {
+                location: 'Dubai, UAE',
+                deadline: 'January 2024',
+                software: 'Revit, ANSYS CFD',
+                description: 'A groundbreaking project combining traditional Arabic architecture with modern smart technology to create sustainable cooling solutions. Features automated wind direction optimization and IoT-based monitoring system.'
+            },
+            'Thermochromatic Roof': {
+                location: 'Dubai, UAE',
+                deadline: 'February 2024',
+                software: 'Revit, ANSYS',
+                description: 'An innovative roofing system that adapts to temperature changes, optimizing energy efficiency and indoor comfort. Features smart materials that respond to environmental conditions.'
+            },
+            'Blending Jameel': {
+                location: 'Dubai, UAE',
+                deadline: 'December 2023',
+                software: 'AutoCAD, Revit, Enscape',
+                description: 'A modern industrial facility designed to optimize blending processes while maintaining high safety standards and operational efficiency.'
+            },
+            'Dental Clinic': {
+                location: 'Abu Dhabi, UAE',
+                deadline: 'March 2023',
+                software: 'Revit, Enscape',
+                description: 'A state-of-the-art dental clinic featuring modern design elements and optimal space utilization for patient comfort.'
+            },
+            'Complete House': {
+                location: 'Sharjah, UAE',
+                deadline: 'August 2023',
+                software: 'Revit, Enscape, AutoCAD',
+                description: 'A contemporary residential project that balances luxury with functionality, incorporating sustainable design principles.'
+            },
+            'IESVE Analysis': {
+                location: 'Dubai, UAE',
+                deadline: 'July 2023',
+                software: 'IESVE, AutoCAD',
+                description: 'Comprehensive energy analysis and optimization study for sustainable building design.'
+            },
+            'Tilal City House': {
+                location: 'Sharjah, UAE',
+                deadline: 'May 2023',
+                software: 'Revit, Enscape, AutoCAD',
+                description: 'Modern residential design focusing on spatial efficiency and natural light optimization.'
+            },
+            'Simple House': {
+                location: 'Dubai, UAE',
+                deadline: 'April 2023',
+                software: 'Revit, Enscape',
+                description: 'Minimalist residential design emphasizing clean lines and functional spaces.'
+            },
+            'Lab Project - Welding Room': {
+                location: 'Abu Dhabi, UAE',
+                deadline: 'June 2023',
+                software: 'ANSYS, AutoCAD',
+                description: 'Advanced CFD analysis and optimization of ventilation systems for a welding laboratory.'
+            },
+            'Private Room': {
+                location: 'Dubai, UAE',
+                deadline: 'September 2023',
+                software: 'Revit, Enscape',
+                description: 'Luxurious private room design with emphasis on comfort and modern healthcare requirements.'
+            },
+            'Procurement Project': {
+                location: 'Dubai, UAE',
+                deadline: 'October 2023',
+                software: 'MS Office Suite',
+                description: 'Comprehensive procurement strategy and implementation plan for construction materials.'
+            },
+            'Merdeka': {
+                location: 'Malaysia',
+                deadline: 'November 2023',
+                software: 'Revit, AutoCAD',
+                description: 'Research project analyzing sustainable design practices in tropical climates.'
+            }
+        };
+
+        // Add these variables at the top of your script
+        let currentPDF = null;
+        let pdfPagePromises = [];
+        let pdfPagesRendered = new Set();
+        let isScrolling = false;
+
+        // Update the previewFile function
+        async function previewFile(projectName, fileName, element) {
+            // Update active state
+            document.querySelectorAll('.file-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+
+            // Special case for IESVE Analysis, Merdeka, Procurement, and Lab projects
+            let filePath;
+            if (projectName === 'IESVE Analysis') {
+                filePath = `projects/IES VE/${fileName}`;
+            } else if (projectName === 'Merdeka') {
+                filePath = `projects/merdeka/${fileName}`;
+            } else if (projectName === 'Procurement Project') {
+                filePath = `projects/Procurement Report/${fileName}`;
+            } else if (projectName === 'Lab Project - Welding Room') {
+                filePath = `projects/Welding Room/${fileName}`;
+            } else {
+                filePath = `projects/${projectName}/${fileName}`;
+            }
+
+            const fileType = fileName.split('.').pop().toLowerCase();
+            const viewer = document.querySelector('.preview-viewer');
+            
+            // Update current project files for fullscreen navigation
+            currentProjectFiles = projectFiles[projectName] || [];
+            currentFullscreenIndex = currentProjectFiles.findIndex(file => file.name === fileName);
+            
+            // Clear previous content
+            viewer.innerHTML = '';
+            
+            if (['jpg', 'jpeg', 'png', 'gif'].includes(fileType)) {
+                const container = document.createElement('div');
+                container.style.position = 'relative';
+                container.style.width = '100%';
+                container.style.height = '100%';
+                
+                const img = document.createElement('img');
+                img.className = 'preview-frame';
+                img.src = filePath;
+                container.appendChild(img);
+                viewer.appendChild(container);
+            } else if (fileType === 'pdf') {
+                try {
+                    const container = document.createElement('div');
+                    container.className = 'pdf-container';
+                    viewer.appendChild(container);
+                    
+                    // Load PDF
+                    const loadingTask = pdfjsLib.getDocument(filePath);
+                    const pdf = await loadingTask.promise;
+                    currentPDF = pdf;
+                    
+                    // Create placeholders for all pages
+                    pdfPagePromises = [];
+                    pdfPagesRendered.clear();
+                    
+                    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                        const canvas = document.createElement('canvas');
+                        canvas.className = 'pdf-page';
+                        canvas.dataset.pageNum = pageNum;
+                        container.appendChild(canvas);
+                        
+                        // Store promise for later rendering
+                        pdfPagePromises[pageNum] = pdf.getPage(pageNum);
+                    }
+                    
+                    // Add scroll listener for lazy loading
+                    container.addEventListener('scroll', handlePDFScroll);
+                    
+                    // Render initial viewport
+                    await renderVisiblePDFPages(container);
+                    
+                } catch (error) {
+                    console.error('Error loading PDF:', error);
+                    viewer.innerHTML = '<div style="color: white; text-align: center; padding: 2rem;">Error loading PDF. Please try downloading the file instead.</div>';
+                }
+            } else if (fileType === 'mp4') {
+                const video = document.createElement('video');
+                video.className = 'preview-frame';
+                video.controls = true;
+                video.src = filePath;
+                viewer.appendChild(video);
+            } else {
+                viewer.innerHTML = '<div style="color: white; text-align: center; padding: 2rem;">Preview not available for this file type</div>';
+            }
+        }
+
+        // Update the project card click handler
+        document.querySelectorAll('.project-item').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.project-info-preview h3').textContent;
+                const files = projectFiles[title] || [];
+                const previewWrapper = document.createElement('div');
+                previewWrapper.className = 'project-content-wrapper';
+                
+                previewWrapper.innerHTML = `
+                    <div class="project-content">
+                        <div class="preview-panel">
+                            <div class="preview-header">
+                                <h3>${title}</h3>
+                                <div class="header-buttons">
+                                    <button class="back-button">Close</button>
+                                    <button class="fullscreen-btn">⛶</button>
+                                </div>
+                            </div>
+                            <div class="preview-viewer"></div>
+                        </div>
+                        <div class="files-panel">
+                            <div class="project-info">
+                                <h4>Project Details</h4>
+                                <div class="info-grid">
+                                    <div class="info-label">Location:</div>
+                                    <div class="info-value">${projectDetails[title].location}</div>
+                                    <div class="info-label">Deadline:</div>
+                                    <div class="info-value">${projectDetails[title].deadline}</div>
+                                    <div class="info-label">Software:</div>
+                                    <div class="info-value">${projectDetails[title].software}</div>
+                                </div>
+                                <p style="margin-top: 1rem; color: rgba(255,255,255,0.8); line-height: 1.6;">
+                                    ${projectDetails[title].description}
+                                </p>
+                            </div>
+                            <div class="files-container">
+                                <div class="files-header">
+                                    <h3>Project Files</h3>
+                                    ${files.length > 0 ? `
+                                        <button class="download-all-btn" onclick="downloadAllFiles('${title}')">
+                                            Download All Files
+                                        </button>
+                                    ` : ''}
+                                </div>
+                                <div class="files-list">
+                                    ${files.map((file, index) => `
+                                        <div class="file-item ${index === 0 ? 'active' : ''}" 
+                                             onclick="previewFile('${title}', '${file.name}', this)">
+                                            <div class="file-icon">${getFileIcon(file.type)}</div>
+                                            <div class="file-info">
+                                                <div class="file-name">${file.name}</div>
+                                                <div class="file-type">${file.type} • ${file.category}</div>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(previewWrapper);
+                
+                // Show the preview with a small delay for the transition
+                setTimeout(() => {
+                    previewWrapper.style.display = 'block';
+                    setTimeout(() => {
+                        previewWrapper.style.opacity = '1';
+                        // Preview the first file automatically
+                        if (files.length > 0) {
+                            previewFile(title, files[0].name, previewWrapper.querySelector('.file-item'));
+                        }
+                    }, 10);
+                }, 10);
+
+                // Handle closing
+                const closeButton = previewWrapper.querySelector('.back-button');
+                closeButton.addEventListener('click', function() {
+                    previewWrapper.style.opacity = '0';
+                    setTimeout(() => {
+                        previewWrapper.remove();
+                    }, 300);
+                });
+
+                // Handle fullscreen
+                const fullscreenButton = previewWrapper.querySelector('.fullscreen-btn');
+                fullscreenButton.addEventListener('click', function() {
+                    const activeFile = files[currentFullscreenIndex];
+                    showFullscreen(title, activeFile.name);
+                });
+            });
+        });
+
+        // Add new functions for PDF lazy loading
+        async function handlePDFScroll(event) {
+            if (!isScrolling) {
+                isScrolling = true;
+                requestAnimationFrame(async () => {
+                    await renderVisiblePDFPages(event.target);
+                    isScrolling = false;
+                });
+            }
+        }
+
+        async function renderVisiblePDFPages(container) {
+            const canvases = container.getElementsByClassName('pdf-page');
+            const containerRect = container.getBoundingClientRect();
+            const buffer = containerRect.height; // Pre-render one screen height above and below
+
+            for (const canvas of canvases) {
+                const rect = canvas.getBoundingClientRect();
+                const pageNum = parseInt(canvas.dataset.pageNum);
+                
+                // Check if canvas is visible or nearly visible
+                if (!pdfPagesRendered.has(pageNum) &&
+                    rect.top < containerRect.bottom + buffer &&
+                    rect.bottom > containerRect.top - buffer) {
+                    
+                    try {
+                        const page = await pdfPagePromises[pageNum];
+                        const viewport = page.getViewport({ scale: 1.0 });
+                        const containerWidth = container.clientWidth - 32;
+                        const scale = containerWidth / viewport.width;
+                        const scaledViewport = page.getViewport({ scale });
+
+                        canvas.width = scaledViewport.width;
+                        canvas.height = scaledViewport.height;
+
+                        const renderContext = {
+                            canvasContext: canvas.getContext('2d'),
+                            viewport: scaledViewport
+                        };
+
+                        await page.render(renderContext);
+                        canvas.classList.add('visible');
+                        pdfPagesRendered.add(pageNum);
+                    } catch (error) {
+                        console.error(`Error rendering page ${pageNum}:`, error);
+                    }
+                }
+            }
+        }
+
+        // Add fullscreen viewer to body if not exists
+        if (!document.querySelector('.fullscreen-viewer')) {
+            const fullscreenViewer = document.createElement('div');
+            fullscreenViewer.className = 'fullscreen-viewer';
+            fullscreenViewer.innerHTML = `
+                <div class="fullscreen-content">
+                    <button class="nav-arrow prev">←</button>
+                    <button class="nav-arrow next">→</button>
+                    <button class="fullscreen-close">Close</button>
+                    <div class="fullscreen-container"></div>
+                </div>
+            `;
+            document.body.appendChild(fullscreenViewer);
+            
+            // Setup fullscreen navigation
+            fullscreenViewer.querySelector('.prev').onclick = () => navigateFullscreen(-1);
+            fullscreenViewer.querySelector('.next').onclick = () => navigateFullscreen(1);
+            fullscreenViewer.querySelector('.fullscreen-close').onclick = hideFullscreen;
+        }
+
+        async function showFullscreen(projectName, fileName) {
+            const viewer = document.querySelector('.fullscreen-viewer');
+            const container = viewer.querySelector('.fullscreen-container');
+            let filePath;
+            if (projectName === 'IESVE Analysis') {
+                filePath = `projects/IES VE/${fileName}`;
+            } else if (projectName === 'Merdeka') {
+                filePath = `projects/merdeka/${fileName}`;
+            } else if (projectName === 'Procurement Project') {
+                filePath = `projects/Procurement Report/${fileName}`;
+            } else if (projectName === 'Lab Project - Welding Room') {
+                filePath = `projects/Welding Room/${fileName}`;
+            } else {
+                filePath = `projects/${projectName}/${fileName}`;
+            }
+            const fileType = fileName.split('.').pop().toLowerCase();
+            
+            viewer.style.display = 'block';
+            viewer.style.opacity = '1';
+            container.innerHTML = '';
+            
+            if (['jpg', 'jpeg', 'png', 'gif'].includes(fileType)) {
+                const img = document.createElement('img');
+                img.className = 'fullscreen-image';
+                img.src = filePath;
+                container.appendChild(img);
+            } else if (fileType === 'pdf') {
+                try {
+                    const loadingTask = pdfjsLib.getDocument(filePath);
+                    const pdf = await loadingTask.promise;
+                    const pdfContainer = document.createElement('div');
+                    pdfContainer.style.cssText = `
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: rgba(0, 0, 0, 0.95);
+                    `;
+                    container.appendChild(pdfContainer);
+
+                    // Add navigation arrows
+                    const prevArrow = document.createElement('button');
+                    prevArrow.textContent = '←';
+                    prevArrow.style.cssText = `
+                        position: fixed;
+                        left: 20px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: rgba(255, 255, 255, 0.2);
+                        border: none;
+                        color: white;
+                        font-size: 24px;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 25px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: background 0.3s;
+                        z-index: 2002;
+                    `;
+                    prevArrow.onmouseover = () => prevArrow.style.background = 'rgba(255, 255, 255, 0.3)';
+                    prevArrow.onmouseout = () => prevArrow.style.background = 'rgba(255, 255, 255, 0.2)';
+                    prevArrow.onclick = () => navigateFullscreen(-1);
+                    container.appendChild(prevArrow);
+
+                    const nextArrow = document.createElement('button');
+                    nextArrow.textContent = '→';
+                    nextArrow.style.cssText = `
+                        position: fixed;
+                        right: 20px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: rgba(255, 255, 255, 0.2);
+                        border: none;
+                        color: white;
+                        font-size: 24px;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 25px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: background 0.3s;
+                        z-index: 2002;
+                    `;
+                    nextArrow.onmouseover = () => nextArrow.style.background = 'rgba(255, 255, 255, 0.3)';
+                    nextArrow.onmouseout = () => nextArrow.style.background = 'rgba(255, 255, 255, 0.2)';
+                    nextArrow.onclick = () => navigateFullscreen(1);
+                    container.appendChild(nextArrow);
+
+                    // Add file name display
+                    const fileNameDisplay = document.createElement('div');
+                    fileNameDisplay.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: rgba(0, 0, 0, 0.7);
+                        color: white;
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        font-size: 14px;
+                        z-index: 2002;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        white-space: nowrap;
+                        max-width: 80vw;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    `;
+                    fileNameDisplay.textContent = fileName;
+                    container.appendChild(fileNameDisplay);
+
+                    // Show filename on navigation
+                    function showFileName() {
+                        fileNameDisplay.style.opacity = '1';
+                        setTimeout(() => {
+                            fileNameDisplay.style.opacity = '0';
+                        }, 2000);
+                    }
+
+                    // Update navigation arrow click handlers
+                    prevArrow.onclick = () => {
+                        navigateFullscreen(-1);
+                        showFileName();
+                    };
+                    nextArrow.onclick = () => {
+                        navigateFullscreen(1);
+                        showFileName();
+                    };
+
+                    // Show filename initially
+                    showFileName();
+
+                    // Add close button
+                    const closeButton = document.createElement('button');
+                    closeButton.textContent = '×';
+                    closeButton.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: rgba(255, 255, 255, 0.2);
+                        border: none;
+                        color: white;
+                        font-size: 24px;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 20px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: background 0.3s;
+                        z-index: 2002;
+                    `;
+                    closeButton.onmouseover = () => closeButton.style.background = 'rgba(255, 255, 255, 0.3)';
+                    closeButton.onmouseout = () => closeButton.style.background = 'rgba(255, 255, 255, 0.2)';
+                    closeButton.onclick = hideFullscreen;
+                    container.appendChild(closeButton);
+
+                    // Create canvas for rendering
+                    const canvas = document.createElement('canvas');
+                    canvas.style.cssText = `
+                        max-width: none;
+                        max-height: none;
+                    `;
+                    pdfContainer.appendChild(canvas);
+
+                    // Add zoom controls
+                    const zoomControls = document.createElement('div');
+                    zoomControls.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 120px;
+                        display: flex;
+                        gap: 10px;
+                        background: rgba(0, 0, 0, 0.7);
+                        padding: 10px;
+                        border-radius: 5px;
+                        z-index: 2001;
+                    `;
+
+                    let currentScale;
+                    const zoomStep = 0.2;
+
+                    // Create zoom percentage display
+                    const zoomDisplay = document.createElement('span');
+                    zoomDisplay.style.cssText = 'color: white; padding: 5px 10px; min-width: 80px; text-align: center;';
+                    
+                    // Create zoom buttons
+                    const zoomInBtn = createZoomButton('+');
+                    const zoomOutBtn = createZoomButton('-');
+                    const resetZoomBtn = createZoomButton('100%');
+
+                    zoomControls.appendChild(zoomOutBtn);
+                    zoomControls.appendChild(zoomDisplay);
+                    zoomControls.appendChild(zoomInBtn);
+                    zoomControls.appendChild(resetZoomBtn);
+                    container.appendChild(zoomControls);
+
+                    // Calculate optimal scale
+                    const page = await pdf.getPage(1);
+                    const viewport = page.getViewport({ scale: 1.0 });
+                    
+                    // Calculate scale to fit height
+                    const viewerHeight = window.innerHeight - 80; // Account for padding
+                    const initialScale = viewerHeight / viewport.height;
+                    currentScale = initialScale;
+
+                    function updateZoom(newScale) {
+                        currentScale = Math.max(0.1, Math.min(5, newScale));
+                        zoomDisplay.textContent = `${Math.round(currentScale * 100)}%`;
+                        renderPage(currentPage);
+                    }
+
+                    function createZoomButton(text) {
+                        const btn = document.createElement('button');
+                        btn.textContent = text;
+                        btn.style.cssText = `
+                            background: rgba(255, 255, 255, 0.2);
+                            border: none;
+                            color: white;
+                            padding: 5px 10px;
+                            border-radius: 3px;
+                            cursor: pointer;
+                            transition: background 0.3s;
+                        `;
+                        btn.onmouseover = () => btn.style.background = 'rgba(255, 255, 255, 0.3)';
+                        btn.onmouseout = () => btn.style.background = 'rgba(255, 255, 255, 0.2)';
+                        return btn;
+                    }
+
+                    // Add zoom event listeners
+                    zoomInBtn.onclick = () => updateZoom(currentScale + zoomStep);
+                    zoomOutBtn.onclick = () => updateZoom(currentScale - zoomStep);
+                    resetZoomBtn.onclick = () => updateZoom(initialScale);
+
+                    // Add keyboard shortcuts for zooming
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === '=' || e.key === '+') {
+                            e.preventDefault();
+                            updateZoom(currentScale + zoomStep);
+                        } else if (e.key === '-') {
+                            e.preventDefault();
+                            updateZoom(currentScale - zoomStep);
+                        }
+                    });
+
+                    // Function to render a specific page
+                    let currentPage = 1;
+                    const totalPages = pdf.numPages;
+
+                    async function renderPage(pageNum) {
+                        currentPage = pageNum;
+                        const page = await pdf.getPage(pageNum);
+                        const viewport = page.getViewport({ scale: currentScale });
+
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+
+                        const renderContext = {
+                            canvasContext: canvas.getContext('2d'),
+                            viewport: viewport
+                        };
+
+                        await page.render(renderContext).promise;
+                    }
+
+                    // Add page controls
+                    const pageControls = document.createElement('div');
+                    pageControls.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: rgba(0, 0, 0, 0.7);
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        z-index: 2001;
+                    `;
+
+                    const prevPage = document.createElement('button');
+                    prevPage.textContent = '←';
+                    prevPage.style.cssText = 'background: none; border: none; color: white; cursor: pointer; font-size: 20px;';
+
+                    const pageInfo = document.createElement('span');
+                    pageInfo.style.color = 'white';
+
+                    const nextPage = document.createElement('button');
+                    nextPage.textContent = '→';
+                    nextPage.style.cssText = prevPage.style.cssText;
+
+                    pageControls.appendChild(prevPage);
+                    pageControls.appendChild(pageInfo);
+                    pageControls.appendChild(nextPage);
+                    container.appendChild(pageControls);
+
+                    // Add page navigation handlers
+                    prevPage.onclick = () => {
+                        if (currentPage > 1) {
+                            currentPage--;
+                            renderPage(currentPage);
+                            pageInfo.textContent = `${currentPage} / ${totalPages}`;
+                        }
+                    };
+
+                    nextPage.onclick = () => {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            renderPage(currentPage);
+                            pageInfo.textContent = `${currentPage} / ${totalPages}`;
+                        }
+                    };
+
+                    // Initial render
+                    updateZoom(initialScale);
+                    pageInfo.textContent = `${currentPage} / ${totalPages}`;
+
+                } catch (error) {
+                    console.error('Error loading PDF:', error);
+                    container.innerHTML = '<div style="color: white; text-align: center;">Error loading PDF</div>';
+                }
+            }
+        }
+
+        function hideFullscreen() {
+            const viewer = document.querySelector('.fullscreen-viewer');
+            viewer.style.opacity = '0';
+            setTimeout(() => {
+                viewer.style.display = 'none';
+            }, 300);
+        }
+
+        function navigateFullscreen(direction) {
+            if (!currentProjectFiles || !currentProjectFiles.length) return;
+            
+            const currentProjectName = document.querySelector('.preview-header h3').textContent;
+            currentFullscreenIndex = (currentFullscreenIndex + direction + currentProjectFiles.length) % currentProjectFiles.length;
+            const nextFile = currentProjectFiles[currentFullscreenIndex];
+            showFullscreen(currentProjectName, nextFile.name);
+        }
+
+        async function downloadAllFiles(projectName) {
+            const files = projectFiles[projectName] || [];
+            if (files.length === 0) return;
+
+            // Create a new zip file
+            const zip = new JSZip();
+            const downloadPromises = [];
+
+            // Show loading state on the button
+            const downloadBtn = document.querySelector('.download-all-btn');
+            const originalText = downloadBtn.textContent;
+            downloadBtn.textContent = 'Preparing Download...';
+            downloadBtn.disabled = true;
+
+            try {
+                // Add each file to the zip
+                for (const file of files) {
+                    const promise = fetch(`projects/${projectName}/${file.name}`)
+                        .then(response => response.blob())
+                        .then(blob => {
+                            zip.file(file.name, blob);
+                        });
+                    downloadPromises.push(promise);
+                }
+
+                // Wait for all files to be added to the zip
+                await Promise.all(downloadPromises);
+
+                // Generate the zip file
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+
+                // Create download link
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(zipBlob);
+                link.download = `${projectName}.zip`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Clean up
+                URL.revokeObjectURL(link.href);
+            } catch (error) {
+                console.error('Error creating zip file:', error);
+                alert('Error creating zip file. Please try again.');
+            } finally {
+                // Restore button state
+                downloadBtn.textContent = originalText;
+                downloadBtn.disabled = false;
+            }
+        }
+
+        function getFileIcon(type) {
+            switch(type) {
+                case 'PDF': return '📄';
+                case 'Image': return '🖼️';
+                case 'Video': return '🎥';
+                default: return '📁';
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            const formMessage = document.getElementById('form-message');
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                message: message,
+                to_name: 'Hamza Dodhy',
+                to_email: 'hamza.dodhy@outlook.com'
+            };
+
+            emailjs.send('service_vtv6jzg', 'template_wybj5pa', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    submitBtn.textContent = 'Message Sent!';
+                    document.querySelector('.contact-form').reset();
+                    
+                    showMessage('Message sent successfully!', 'success');
+                    
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    submitBtn.textContent = 'Error! Try Again';
+                    
+                    showMessage('Failed to send message. Please try again.', 'error');
+                    
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                });
+        }
+
+        function showMessage(text, type) {
+            const formMessage = document.getElementById('form-message');
+            formMessage.textContent = text;
+            formMessage.className = 'form-message ' + type;
+            
+            setTimeout(() => {
+                formMessage.className = 'form-message';
+            }, 3000);
+        }
+
+        // Add active state to navigation
+        function updateActiveNav() {
+            const sections = ['welcome', 'projects', 'contact'];
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let currentSection = sections[0];
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                const rect = element.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    currentSection = section;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href').substring(1);
+                if (href === currentSection) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
